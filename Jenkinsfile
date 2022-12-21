@@ -1,10 +1,13 @@
 pipeline {
-    agent { docker { image 'python:3.12.0a1-slim' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'python --version'
-            }
+        agent { docker { image 'maven:3.3.3' } }
+        stages {
+            stage('build') {
+                environment {
+                  HOME="."
+                }
+                steps {
+                    sh 'mvn --version'
+                }
+           }
         }
     }
-}
