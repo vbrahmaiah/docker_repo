@@ -1,13 +1,12 @@
 pipeline {
-        agent { docker { image 'maven:3.3.3' } }
-        stages {
-            stage('build') {
-                environment {
-                  HOME="."
-                }
-                steps {
-                    sh 'mvn --version'
-                }
-           }
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
     }
+}
